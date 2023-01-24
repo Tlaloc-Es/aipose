@@ -2,8 +2,8 @@ import os
 
 import click
 
-from pypose.model import YoloV7Pose
-from pypose.webcam import process_webcam
+from aipose.model import YoloV7Pose
+from aipose.webcam import process_webcam
 
 
 @click.command()

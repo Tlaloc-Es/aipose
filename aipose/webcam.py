@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 from numpy import ndarray
 
-from pypose.model import YoloV7Pose
-from pypose.plot import plot
+from aipose.model import YoloV7Pose
+from aipose.plot import plot
 
 
 def webcam_ia(frame: ndarray, model: YoloV7Pose) -> ndarray:

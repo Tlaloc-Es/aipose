@@ -5,7 +5,7 @@ from numpy import ndarray
 from pydantic import BaseModel
 from torchvision import transforms
 
-from pypose.utils import letterbox, non_max_suppression_kpt, output_to_keypoint
+from aipose.utils import letterbox, non_max_suppression_kpt, output_to_keypoint
 
 
 class Keypoint(BaseModel):
