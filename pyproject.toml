@@ -1,12 +1,13 @@
 [tool.poetry]
 name = "pypose"
-version = "0.1.0"
+version = "0.2.0"
 description = "Library to use pose estimation in your projects easily"
 license = "MIT"
 homepage = "https://github.com/Tlaloc-Es/pypose"
 repository = "https://github.com/Tlaloc-Es/pypose"
 keywords = ["pose-estimator", "yolo", "yolov7"]
 authors = ["Tlaloc-Es <dev@tlaloc-es.com>"]
+packages = [{include = "pypose"}]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -53,7 +54,7 @@ poethepoet = "^0.18.1"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.1.0"
+version = "0.2.0"
 tag_format = "$version"
 
 [build-system]
