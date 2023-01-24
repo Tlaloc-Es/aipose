@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pypose"
-version = "0.2.0"
+version = "0.2.1"
 description = "Library to use pose estimation in your projects easily"
 license = "MIT"
 homepage = "https://github.com/Tlaloc-Es/pypose"
