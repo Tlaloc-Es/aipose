@@ -39,7 +39,7 @@ ipython = "*"
 pipenv-setup = "*"
 
 [tool.poetry.scripts]
-posewebcam = 'pose.__main__:webcam'
+posewebcam = 'aipose.__main__:webcam'
 
 [tool.poe.tasks]
 dev = "python -m src"
