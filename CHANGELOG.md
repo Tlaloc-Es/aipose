@@ -1,3 +1,9 @@
+## 0.4.0 (2023-01-27)
+
+### Feat
+
+- **webcam**: added managers to add logic to webcam
+
 ## 0.3.1 (2023-01-27)
 
 ### Feat
