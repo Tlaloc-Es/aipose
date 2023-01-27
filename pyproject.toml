@@ -1,6 +1,8 @@
 [tool.poetry]
 name = "aipose"
-version = "0.2.1"
+version_files = [
+    "__version__.py"
+]
 description = "Library to use pose estimation in your projects easily"
 license = "MIT"
 homepage = "https://github.com/Tlaloc-Es/aipose"
@@ -55,9 +57,7 @@ type_check = "mypy src"
 poethepoet = "^0.18.1"
 
 [tool.commitizen]
-version_files = [
-    "pyproject.toml:^version"
-]
+version = "0.3.0" 
 
 [build-system]
 requires = ["poetry-core"]
