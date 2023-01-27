@@ -1,9 +1,13 @@
-## Unreleased
+## 0.3.1 (2023-01-27)
 
 ### Feat
 
 - **model.py**: currently the yolo v7 pose model is downloaded into home/.aipose folder
 - **model.py**: the model is downloaded into home folder if doesn't exists
+
+### Fix
+
+- **pyproject.toml**: update outdated reference to cli execution
 
 ## 0.1.1 (2023-01-24)
 
