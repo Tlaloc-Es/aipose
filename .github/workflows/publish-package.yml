@@ -7,6 +7,7 @@ on:
 jobs:
   publish-service-client-package:
     runs-on: ubuntu-latest
+    name: "Publish package at PyPi"
     permissions:
       contents: write
     steps:
