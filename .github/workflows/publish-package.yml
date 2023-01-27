@@ -2,7 +2,7 @@ name: Build and publish python package
 
 on:
   workflow_run:
-    workflows: ["Create release"]
+    workflows: ["Bump version"]
     types:
       - completed
 
