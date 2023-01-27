@@ -101,9 +101,7 @@ class YoloV7Pose:
     _model_repo: str = "WongKinYiu/yolov7"
     aipose_model_hash: str = "62ca91ec6612b22bef0ab4c95f3e2d07"
     aipose_model_file_name: str = "yolov7-w6-pose.pt"
-    model_url_download: str = (
-        "https://huggingface.co/Tlaloc-Es/yolov7-w6-pose.pt/resolve/main/yolov7-w6-pose.pt",
-    )
+    model_url_download: str = "https://huggingface.co/Tlaloc-Es/yolov7-w6-pose.pt/resolve/main/yolov7-w6-pose.pt"  # noqa: E501
 
     def __init__(self, aipose_path: str):
         self.aipose_path = aipose_path

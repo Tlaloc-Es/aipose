@@ -12,10 +12,8 @@ logging.basicConfig(level=logging.INFO)
 
 @click.command()
 def webcam():
-
     home_path = Path.home()
     aipose_path = os.path.join(home_path, ".aipose")
-
     os.makedirs(os.path.join(home_path, aipose_path), exist_ok=True)
 
     model = YoloV7Pose(aipose_path)
