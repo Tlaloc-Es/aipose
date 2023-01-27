@@ -1,9 +1,14 @@
+import hashlib
+import logging
+import os
 from typing import List, Tuple
 
+import requests
 import torch
 from numpy import ndarray
 from pydantic import BaseModel
 from torchvision import transforms
+from tqdm import tqdm
 
 from aipose.utils import letterbox, non_max_suppression_kpt, output_to_keypoint
 
@@ -90,23 +95,63 @@ class Keypoints:
 
 
 class YoloV7Pose:
-
+    aipose_model_path: str = ""
+    aipose_path: str = ""
+    _model_path: str = ""
     _model_repo: str = "WongKinYiu/yolov7"
+    aipose_model_hash: str = "62ca91ec6612b22bef0ab4c95f3e2d07"
+    aipose_model_file_name: str = "yolov7-w6-pose.pt"
+    model_url_download: str = (
+        "https://huggingface.co/Tlaloc-Es/yolov7-w6-pose.pt/resolve/main/yolov7-w6-pose.pt",
+    )
 
-    def __init__(self, path: str):
+    def __init__(self, aipose_path: str):
+        self.aipose_path = aipose_path
+        self.aipose_model_path = os.path.join(
+            self.aipose_path, self.aipose_model_file_name
+        )
+
+        self.download_yolo_w6_pose()
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
         try:
             self.model = torch.hub.load(
-                self._model_repo, "custom", f"{path}", trust_repo=True
+                self._model_repo, "custom", f"{aipose_path}", trust_repo=True
             )
         except Exception as e:  # noqa: F841
-            weigths = torch.load(f"{path}", map_location=self.device)
+            weigths = torch.load(self.aipose_model_path, map_location=self.device)
+
         self.model = weigths["model"]
         self.model.float().eval()
 
         if torch.cuda.is_available():
             self.model.half().to(self.device)
+
+    def download_yolo_w6_pose(self) -> None:
+
+        if not os.path.isfile(self.aipose_model_path):
+            self._download_yolo_w6_pose()
+        current_model_hash = hashlib.md5(
+            open(self.aipose_model_path, "rb").read()
+        ).hexdigest()
+
+        if self.aipose_model_hash != current_model_hash:
+            self._download_yolo_w6_pose()
+
+    def _download_yolo_w6_pose(self):
+        logging.info("Downloding yolov7-w6-pose.pt")
+        self.download_file(
+            self.model_url_download,
+            self.aipose_model_path,
+        )
+
+    def download_file(self, url, local_filename):
+        with requests.get(url, stream=True) as r:
+            r.raise_for_status()
+            with open(local_filename, "wb") as f:
+                for chunk in tqdm(r.iter_content(chunk_size=8192)):
+                    f.write(chunk)
+        return local_filename
 
     def __call__(self, image: ndarray) -> Tuple[List[Keypoints], ndarray]:
         # Resize and pad image
