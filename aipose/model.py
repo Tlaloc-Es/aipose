@@ -1,6 +1,7 @@
 import hashlib
 import logging
 import os
+from pathlib import Path
 from typing import List, Tuple
 
 import requests
@@ -103,8 +104,11 @@ class YoloV7Pose:
     aipose_model_file_name: str = "yolov7-w6-pose.pt"
     model_url_download: str = "https://huggingface.co/Tlaloc-Es/yolov7-w6-pose.pt/resolve/main/yolov7-w6-pose.pt"  # noqa: E501
 
-    def __init__(self, aipose_path: str):
-        self.aipose_path = aipose_path
+    def __init__(self):
+        home_path = Path.home()
+        self.aipose_path = os.path.join(home_path, ".aipose")
+        os.makedirs(os.path.join(home_path, self.aipose_path), exist_ok=True)
+
         self.aipose_model_path = os.path.join(
             self.aipose_path, self.aipose_model_file_name
         )
@@ -114,7 +118,7 @@ class YoloV7Pose:
 
         try:
             self.model = torch.hub.load(
-                self._model_repo, "custom", f"{aipose_path}", trust_repo=True
+                self._model_repo, "custom", f"{self.aipose_path}", trust_repo=True
             )
         except Exception as e:  # noqa: F841
             weigths = torch.load(self.aipose_model_path, map_location=self.device)
