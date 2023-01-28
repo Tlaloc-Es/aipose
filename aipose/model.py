@@ -15,9 +15,9 @@ from aipose.utils import letterbox, non_max_suppression_kpt, output_to_keypoint
 
 
 class Keypoint(BaseModel):
-    x: float
-    y: float
-    conf: float
+    x: float | int
+    y: float | int
+    conf: float | int
 
 
 class Keypoints:
@@ -29,9 +29,9 @@ class Keypoints:
 
     def _get_x_y_conf(self, start_index: int) -> Keypoint:
         end_index = start_index + self._step_keypoint
-        x = self.raw_keypoints[start_index:end_index]
-        y = self.raw_keypoints[start_index:end_index]
-        conf = self.raw_keypoints[start_index:end_index]
+        x = self.raw_keypoints[start_index:end_index][0]
+        y = self.raw_keypoints[start_index:end_index][1]
+        conf = self.raw_keypoints[start_index:end_index][2]
         return Keypoint(x=x, y=y, conf=conf)
 
     def get_nose(self) -> Keypoint:
