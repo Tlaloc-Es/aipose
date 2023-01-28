@@ -1,3 +1,17 @@
+## 0.5.0 (2023-01-28)
+
+### Feat
+
+- **frame_managers.py**: added new managers
+
+### Fix
+
+- **model.py**: added int type to x, y and conf
+
+### Refactor
+
+- **webcam.md**: update webcam.md code and style
+
 ## 0.4.0 (2023-01-27)
 
 ### Feat
