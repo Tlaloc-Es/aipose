@@ -1,5 +1,6 @@
 import cv2
 import torch
+
 from aipose.webcam.frame_managers import FrameManager
 
 
