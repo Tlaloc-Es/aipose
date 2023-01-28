@@ -1,3 +1,9 @@
+## 0.5.1 (2023-01-28)
+
+### Refactor
+
+- **aipose**: run isort over the code
+
 ## 0.5.0 (2023-01-28)
 
 ### Feat
