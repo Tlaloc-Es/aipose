@@ -7,10 +7,9 @@
 
 </div>
 
-
 <p align="center">
-        <img src="./logo.png" width="200" height="240"/>
-    </p>
+    <img src="https://raw.githubusercontent.com/Tlaloc-Es/aipose/master/logo.png" width="200" height="240"/>
+</p>
 
 Library to use pose estimation in your projects easily.
 ## Instalation [![PyPI](https://img.shields.io/pypi/v/aipose.svg)](https://pypi.org/project/aipose/)
