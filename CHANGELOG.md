@@ -1,3 +1,9 @@
+## 0.8.0 (2023-01-29)
+
+### Feat
+
+- **frame_manager_base**: added a new on_ends_stream event
+
 ## 0.7.1 (2023-01-29)
 
 ### Fix
