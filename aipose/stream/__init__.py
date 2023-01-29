@@ -37,3 +37,5 @@ def _process_stream(frame_manager: FrameManagerBase, input: Any):
 
     capture.release()
     cv2.destroyAllWindows()
+
+    frame_manager.on_ends_stream()

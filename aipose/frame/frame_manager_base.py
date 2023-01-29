@@ -12,3 +12,6 @@ class FrameManagerBase:
 
     def to_stop(self) -> bool:
         return self.stop
+
+    def on_ends_stream(self) -> None:
+        pass
