@@ -1,6 +1,7 @@
+from typing import Any
+
 import cv2
 import torch
-from typing import Any
 
 from aipose.frame.frame_manager_base import FrameManagerBase
 
