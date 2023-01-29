@@ -1,12 +1,19 @@
 # AIPOSE
 
-<center>
-    <b> Library to use pose estimation in your projects easily.</b>
-    <br>
-    <a href="https://badge.fury.io/py/aipose"><img src="https://badge.fury.io/py/aipose.svg" alt="PyPI version" height="18"></a>
-</center>
+<div align="center">
 
-## Instalation
+[![Downloads](https://static.pepy.tech/personalized-badge/aipose?period=month&units=international_system&left_color=grey&right_color=blue&left_text=PyPi%20Downloads)](https://pepy.tech/project/aipose)
+[![Stars](https://img.shields.io/github/stars/Tlaloc-Es/aipose?color=yellow&style=flat)](https://github.com/Tlaloc-Es/aipose/stargazers)
+
+</div>
+
+
+<p align="center">
+        <img src="./logo.png" width="200" height="240"/>
+    </p>
+
+Library to use pose estimation in your projects easily.
+## Instalation [![PyPI](https://img.shields.io/pypi/v/aipose.svg)](https://pypi.org/project/aipose/)
 
 You can install `aipose` from [Pypi](https://pypi.org/project/aipose/). It's going to install the library itself and its prerequisites as well.
 
