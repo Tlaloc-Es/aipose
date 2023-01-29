@@ -44,6 +44,7 @@ You can check the section notebooks in the repository to check the usage of the 
 The examples are:
 
 * [How to draw key points in a video](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/video.ipynb)
+* [How to draw key points in a video and store it](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/process_and_save_video.ipynb)
 * [How to draw key points in a webcam](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/webcam.ipynb)
 * [How to draw key points in a picture](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/plot_keypoints.ipynb)
 * [How to capture a frame to apply your business logic](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/custom%20manager.ipynb)
