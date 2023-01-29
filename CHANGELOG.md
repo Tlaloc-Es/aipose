@@ -1,3 +1,9 @@
+## 0.7.1 (2023-01-29)
+
+### Fix
+
+- **frame_yolo_v7.py**: always returned the original frame instead the processed_frame
+
 ## 0.7.0 (2023-01-29)
 
 ### Feat
