@@ -12,11 +12,11 @@ class FrameYoloV7(FrameManagerBase):
 
     def on_frame(self, frame: ndarray) -> ndarray:
         prediction, image_tensor = self.model(frame)
-        proccessed_frame = self.on_predict(frame, prediction, image_tensor)
-        if proccessed_frame is None:
+        processed_frame = self.on_predict(frame, prediction, image_tensor)
+        if processed_frame is None:
             return frame
         else:
-            return frame
+            return processed_frame
 
     def on_predict(
         self, frame: ndarray, prediction: List[Keypoints], image_tensor: ndarray
