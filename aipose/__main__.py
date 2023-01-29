@@ -2,9 +2,9 @@ import logging
 
 import click
 
+from aipose.frame import FramePlot
 from aipose.model import YoloV7Pose
-from aipose.webcam import process_webcam
-from aipose.webcam.frame_managers import FramePlot
+from aipose.stream import process_webcam
 
 logging.basicConfig(level=logging.INFO)
 

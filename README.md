@@ -33,3 +33,8 @@ You can do a donation with the following link.
 <a href="https://www.buymeacoffee.com/tlaloc" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
 
 Or you can try to make a pull request with your improvements to the repo.
+
+
+## Source of videos and images
+
+* Video by Mikhail Nilov: https://www.pexels.com/video/a-woman-exercising-using-an-exercise-ball-6739975/
