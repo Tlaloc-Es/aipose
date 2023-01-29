@@ -1,3 +1,9 @@
+## 0.6.0 (2023-01-29)
+
+### Feat
+
+- **aipose**: add support to work with videos and refactor api
+
 ## 0.5.1 (2023-01-28)
 
 ### Refactor
