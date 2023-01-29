@@ -1,3 +1,13 @@
+## 0.7.0 (2023-01-29)
+
+### Feat
+
+- **aipose**: add support to work with videos and refactor api
+
+### Refactor
+
+- **frame-and-stream**: apply isort and fixed __all__
+
 ## 0.6.0 (2023-01-29)
 
 ### Feat
