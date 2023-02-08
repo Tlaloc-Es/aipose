@@ -3,7 +3,7 @@ from typing import List
 from numpy import ndarray
 
 from aipose.frame import FrameManagerBase
-from aipose.model import Keypoints, YoloV7Pose
+from aipose.models.yolov7 import YoloV7PoseKeypoints, YoloV7Pose
 
 
 class FrameYoloV7(FrameManagerBase):
@@ -19,6 +19,9 @@ class FrameYoloV7(FrameManagerBase):
             return processed_frame
 
     def on_predict(
-        self, frame: ndarray, prediction: List[Keypoints], image_tensor: ndarray
+        self,
+        frame: ndarray,
+        prediction: List[YoloV7PoseKeypoints],
+        image_tensor: ndarray,
     ) -> None | ndarray:
         raise NotImplementedError

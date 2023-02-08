@@ -5,7 +5,7 @@ import numpy as np
 from numpy import ndarray
 
 from aipose.frame import FrameManagerBase
-from aipose.model import Keypoints
+from aipose.models.yolov7 import YoloV7PoseKeypoints
 from aipose.plot import plot
 
 
@@ -19,7 +19,9 @@ class FramePlot(FrameManagerBase):
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         return frame
 
-    def _plot(self, prediction: List[Keypoints], image_tensor: ndarray) -> ndarray:
+    def _plot(
+        self, prediction: List[YoloV7PoseKeypoints], image_tensor: ndarray
+    ) -> ndarray:
         frame = plot(
             image_tensor,
             np.array([value.get_raw_keypoint() for value in prediction]),

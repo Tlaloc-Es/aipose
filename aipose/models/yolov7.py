@@ -14,75 +14,105 @@ from tqdm import tqdm
 from aipose.utils import letterbox, non_max_suppression_kpt, output_to_keypoint
 
 
-class Keypoint(BaseModel):
+class YoloV7PoseKeypoint(BaseModel):
     x: float | int
     y: float | int
     conf: float | int
 
 
-class Keypoints:
+class YoloV7PoseKeypoints:
     _step_keypoint = 3
     raw_keypoints: List[float]
 
     def __init__(self, raw_keypoints: List[float]):
         self.raw_keypoints = raw_keypoints
 
-    def _get_x_y_conf(self, start_index: int) -> Keypoint:
+    def _get_x_y_conf(self, start_index: int) -> YoloV7PoseKeypoint:
         end_index = start_index + self._step_keypoint
         x = self.raw_keypoints[start_index:end_index][0]
         y = self.raw_keypoints[start_index:end_index][1]
         conf = self.raw_keypoints[start_index:end_index][2]
-        return Keypoint(x=x, y=y, conf=conf)
+        return YoloV7PoseKeypoint(x=x, y=y, conf=conf)
 
-    def get_nose(self) -> Keypoint:
+    def total_confidence_over(self, expected_confidence: float):
+        return [
+            *filter(
+                lambda x: x > expected_confidence,
+                [
+                    *map(
+                        self.raw_keypoints.__getitem__,
+                        [
+                            9,
+                            12,
+                            15,
+                            18,
+                            21,
+                            24,
+                            27,
+                            30,
+                            33,
+                            36,
+                            39,
+                            42,
+                            45,
+                            48,
+                            51,
+                            53,
+                        ],
+                    )
+                ],
+            )
+        ]
+
+    def get_nose(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(7)
 
-    def get_left_eye(self) -> Keypoint:
+    def get_left_eye(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(10)
 
-    def get_right_eye(self) -> Keypoint:
+    def get_right_eye(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(13)
 
-    def get_left_ear(self) -> Keypoint:
+    def get_left_ear(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(16)
 
-    def get_right_ear(self) -> Keypoint:
+    def get_right_ear(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(19)
 
-    def get_left_shoulder(self) -> Keypoint:
+    def get_left_shoulder(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(22)
 
-    def get_right_shoulder(self) -> Keypoint:
+    def get_right_shoulder(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(25)
 
-    def get_left_elbow(self) -> Keypoint:
+    def get_left_elbow(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(28)
 
-    def get_right_elbow(self) -> Keypoint:
+    def get_right_elbow(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(31)
 
-    def get_left_wrist(self) -> Keypoint:
+    def get_left_wrist(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(34)
 
-    def get_right_wrist(self) -> Keypoint:
+    def get_right_wrist(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(37)
 
-    def get_left_hip(self) -> Keypoint:
+    def get_left_hip(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(40)
 
-    def get_right_hip(self) -> Keypoint:
+    def get_right_hip(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(43)
 
-    def get_left_knee(self) -> Keypoint:
+    def get_left_knee(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(46)
 
-    def get_right_knee(self) -> Keypoint:
+    def get_right_knee(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(49)
 
-    def get_left_ankle(self) -> Keypoint:
+    def get_left_ankle(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(52)
 
-    def get_right_ankle(self) -> Keypoint:
+    def get_right_ankle(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(54)
 
     def get_body_keypoints(self) -> List[float]:
@@ -155,7 +185,7 @@ class YoloV7Pose:
                     f.write(chunk)
         return local_filename
 
-    def __call__(self, image: ndarray) -> Tuple[List[Keypoints], ndarray]:
+    def __call__(self, image: ndarray) -> Tuple[List[YoloV7PoseKeypoints], ndarray]:
         # Resize and pad image
         image = letterbox(image, 960, stride=64, auto=True)[0]  # shape: (567, 960, 3)
         # Apply transforms
@@ -179,4 +209,4 @@ class YoloV7Pose:
         with torch.no_grad():
             output = output_to_keypoint(output)
 
-        return [Keypoints(prediction) for prediction in output], image
+        return [YoloV7PoseKeypoints(prediction) for prediction in output], image
