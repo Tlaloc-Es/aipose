@@ -1,3 +1,9 @@
+## 1.0.0 (2023-02-08)
+
+### Refactor
+
+- **model.py**: refactor model.py to yolov7.py in order to add news pose estimators
+
 ## 0.8.0 (2023-01-29)
 
 ### Feat
