@@ -96,6 +96,27 @@ class YoloV7PoseKeypoints:
             )
         ]
 
+    def get_batch_id(self) -> int:
+        return self.raw_keypoints[0]
+
+    def get_class_id(self) -> int:
+        return self.raw_keypoints[1]
+
+    def get_x_coordinate_of_bbox(self) -> float:
+        return self.raw_keypoints[2]
+
+    def get_y_coordinate_of_bbox(self) -> float:
+        return self.raw_keypoints[3]
+
+    def get_width_of_bbox(self) -> float:
+        return self.raw_keypoints[4]
+
+    def get_height_of_bbox(self) -> float:
+        return self.raw_keypoints[5]
+
+    def get_confidence_of_bbox(self) -> float:
+        return self.raw_keypoints[6]
+
     def get_nose(self) -> YoloV7PoseKeypoint:
         return self._get_x_y_conf(7)
 
