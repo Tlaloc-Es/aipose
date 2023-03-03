@@ -3,7 +3,7 @@ from typing import List
 from numpy import ndarray
 
 from aipose.frame import FrameManagerBase
-from aipose.models.yolov7 import YoloV7PoseKeypoints, YoloV7Pose
+from aipose.models.yolov7 import YoloV7Pose, YoloV7PoseKeypoints
 
 
 class FrameYoloV7(FrameManagerBase):

@@ -1,9 +1,11 @@
 import hashlib
 import logging
 import os
+from enum import Enum
 from pathlib import Path
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
+import numpy as np
 import requests
 import torch
 from numpy import ndarray
@@ -14,6 +16,13 @@ from tqdm import tqdm
 from aipose.utils import letterbox, non_max_suppression_kpt, output_to_keypoint
 
 
+class BBox(BaseModel):
+    xmin: int
+    xmax: int
+    ymin: int
+    ymax: int
+
+
 class YoloV7PoseKeypoint(BaseModel):
     x: float | int
     y: float | int
@@ -21,11 +30,15 @@ class YoloV7PoseKeypoint(BaseModel):
 
 
 class YoloV7PoseKeypoints:
-    _step_keypoint = 3
+    _step_keypoint: int = 3
     raw_keypoints: List[float]
+    height: int = 0
+    width: int = 0
 
-    def __init__(self, raw_keypoints: List[float]):
+    def __init__(self, raw_keypoints: List[float], height: int, width: int):
         self.raw_keypoints = raw_keypoints
+        self.height = height
+        self.width = width
 
     def _get_x_y_conf(self, start_index: int) -> YoloV7PoseKeypoint:
         end_index = start_index + self._step_keypoint
@@ -33,6 +46,25 @@ class YoloV7PoseKeypoints:
         y = self.raw_keypoints[start_index:end_index][1]
         conf = self.raw_keypoints[start_index:end_index][2]
         return YoloV7PoseKeypoint(x=x, y=y, conf=conf)
+
+    def _replace_points(self, a_index: int, b_index: int):
+        end_index_a = a_index + self._step_keypoint
+        a_x = self.raw_keypoints[a_index:end_index_a][0]
+        a_y = self.raw_keypoints[a_index:end_index_a][1]
+        a_conf = self.raw_keypoints[a_index:end_index_a][2]
+
+        end_index_b = b_index + self._step_keypoint
+        b_x = self.raw_keypoints[b_index:end_index_b][0]
+        b_y = self.raw_keypoints[b_index:end_index_b][1]
+        b_conf = self.raw_keypoints[b_index:end_index_b][2]
+
+        self.raw_keypoints[a_index:end_index_a][0] = b_x
+        self.raw_keypoints[a_index:end_index_a][1] = b_y
+        self.raw_keypoints[a_index:end_index_a][2] = b_conf
+
+        self.raw_keypoints[b_index:end_index_b][0] = a_x
+        self.raw_keypoints[b_index:end_index_b][1] = a_y
+        self.raw_keypoints[b_index:end_index_b][2] = a_conf
 
     def total_confidence_over(self, expected_confidence: float):
         return [
@@ -113,13 +145,70 @@ class YoloV7PoseKeypoints:
         return self._get_x_y_conf(52)
 
     def get_right_ankle(self) -> YoloV7PoseKeypoint:
-        return self._get_x_y_conf(54)
+        return self._get_x_y_conf(55)
 
     def get_body_keypoints(self) -> List[float]:
         return self.raw_keypoints[7:]
 
+    def is_backwards(self) -> bool:
+        return self.get_left_ear().x < self.get_right_ear().x
+
+    def get_body_keypoints_normalize(self):
+        body_keypoints = self.get_body_keypoints()
+        body_keypoints_normalaized = body_keypoints / np.array(
+            [self.width, self.height, 1] * 17
+        )
+        return body_keypoints_normalaized
+
     def get_raw_keypoint(self) -> List[float]:
         return self.raw_keypoints
+
+    def get_points(self) -> ndarray:
+        raw_points = self.get_body_keypoints()
+        points = np.array([*zip(raw_points[::3], raw_points[1::3])])
+        return points
+
+    def get_confidences(self) -> ndarray:
+        raw_points = self.get_body_keypoints_normalize()
+        confidences = raw_points[2::3]
+        return confidences
+
+    def cosine_similarity(self, pose: "YoloV7PoseKeypoints") -> float:
+        a = self.get_points_normalize_by_bbox()
+        b = pose.get_points_normalize_by_bbox()
+
+        return round(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)), 4)
+
+    def get_points_normalize_by_bbox(self) -> ndarray:
+        bbox_0 = self.calculate_bbox()
+        xmin_0 = bbox_0.xmin
+        ymin_0 = bbox_0.ymin
+        bbox_0.xmax = bbox_0.xmax - xmin_0
+        bbox_0.xmin = bbox_0.xmin - xmin_0
+        bbox_0.ymax = bbox_0.ymax - ymin_0
+        bbox_0.ymin = bbox_0.ymin - ymin_0
+        keypoints_0 = self.get_body_keypoints()
+        keypoints_0_normalized = keypoints_0 - np.array([xmin_0, ymin_0, 0] * 17)
+        return keypoints_0_normalized
+
+    def calculate_bbox(self) -> BBox:
+        xmin = min([x for x, y in self.get_points()])
+        xmax = max([x for x, y in self.get_points()])
+        ymin = min([y for x, y in self.get_points()])
+        ymax = max([y for x, y in self.get_points()])
+
+        return BBox(xmin=xmin, xmax=xmax, ymin=ymin, ymax=ymax)
+
+    def turn(self) -> "YoloV7PoseKeypoints":
+        self._replace_points(10, 13)
+        self._replace_points(16, 19)
+        self._replace_points(22, 25)
+        self._replace_points(28, 31)
+        self._replace_points(34, 37)
+        self._replace_points(40, 43)
+        self._replace_points(46, 49)
+        self._replace_points(52, 55)
+        return self
 
     def __str__(self) -> str:
         return str(self.raw_keypoints)
@@ -209,4 +298,7 @@ class YoloV7Pose:
         with torch.no_grad():
             output = output_to_keypoint(output)
 
-        return [YoloV7PoseKeypoints(prediction) for prediction in output], image
+        return [
+            YoloV7PoseKeypoints(prediction, image.shape[2], image.shape[3])
+            for prediction in output
+        ], image

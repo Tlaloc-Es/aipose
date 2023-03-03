@@ -48,6 +48,8 @@ The examples are:
 * [How to draw key points in a picture](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/plot_keypoints.ipynb)
 * [How to capture a frame to apply your business logic](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/custom%20manager.ipynb)
 * [How to stop the video stream when anybody raises hands with YOLOv7](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/process_keypoints.ipynb)
+* [How to calculate pose similarity with YOLOv7](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/pose_similarity.ipynb)
+* [How to turn the pose with YOLOv7](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/pose_similarity.ipynb)
 
 ## References
 
@@ -64,3 +66,14 @@ Or you can try to make a pull request with your improvements to the repo.
 ## Source of videos and images
 
 * Video by Mikhail Nilov: https://www.pexels.com/video/a-woman-exercising-using-an-exercise-ball-6739975/
+
+In folder notebooks/poses/
+
+* [Photo by Roman Davayposmotrim: https://www.pexels.com/photo/woman-wearing-black-sports-bra-reaching-floor-while-standing-35987/](notebooks/poses/pexels-roman-davayposmotrim-35987.jpg)
+* [Photo by Vlada Karpovich: https://www.pexels.com/photo/a-woman-doing-yoga-4534689/](pexels-roman-davayposmotrim-35987.jpg)
+* [Photo by Lucas Pezeta: https://www.pexels.com/photo/woman-doing-yoga-2121049/](notebooks/poses/pexels-lucas-pezeta-2121049)
+* [Photo by Cliff  Booth: https://www.pexels.com/photo/photo-of-woman-in-a-yoga-position-4057839/](pnotebooks/poses/exels-cliff-booth-4057839.jpg)
+* [Photo by Cliff  Booth: https://www.pexels.com/photo/photo-of-woman-meditating-alone-4056969/](notebooks/poses/pexels-cliff-booth-4056969.jpg)
+* [Photo by MART  PRODUCTION: https://www.pexels.com/photo/photo-of-a-woman-meditating-8032834/](notebooks/poses/pexels-mart-production-8032834.jpg)
+* [Photo by Antoni Shkraba: https://www.pexels.com/photo/woman-in-blue-tank-top-and-black-leggings-doing-yoga-4662330/](notebooks/poses/pexels-antoni-shkraba-4662330.jpg)
+* [Photo by MART  PRODUCTION: https://www.pexels.com/photo/woman-wearing-a-sports-bra-8032742/](notebooks/poses/pexels-mart-production-8032742.jpg)
