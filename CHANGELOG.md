@@ -1,3 +1,9 @@
+## 1.2.0 (2023-03-03)
+
+### Feat
+
+- **YoloV7PoseKeypoints**: added info about atch_id, class_id, x, y, w, h, conf
+
 ## 1.1.0 (2023-03-03)
 
 ### Feat
