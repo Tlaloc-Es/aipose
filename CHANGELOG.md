@@ -1,3 +1,9 @@
+## 1.1.0 (2023-03-03)
+
+### Feat
+
+- **yolov7.py**: currently you can calculate the pose similarity, and turn a pose prediction
+
 ## 1.0.0 (2023-02-08)
 
 ### Refactor
