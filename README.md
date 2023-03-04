@@ -50,6 +50,7 @@ The examples are:
 * [How to stop the video stream when anybody raises hands with YOLOv7](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/process_keypoints.ipynb)
 * [How to calculate pose similarity with YOLOv7](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/pose_similarity.ipynb)
 * [How to turn the pose with YOLOv7](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/pose_similarity.ipynb)
+* [How to train a pose classificator](https://github.com/Tlaloc-Es/aipose/blob/master/notebooks/Pose_Classificator.ipynb)
 
 ## References
 
@@ -77,3 +78,15 @@ In folder notebooks/poses/
 * [Photo by MART  PRODUCTION: https://www.pexels.com/photo/photo-of-a-woman-meditating-8032834/](notebooks/poses/pexels-mart-production-8032834.jpg)
 * [Photo by Antoni Shkraba: https://www.pexels.com/photo/woman-in-blue-tank-top-and-black-leggings-doing-yoga-4662330/](notebooks/poses/pexels-antoni-shkraba-4662330.jpg)
 * [Photo by MART  PRODUCTION: https://www.pexels.com/photo/woman-wearing-a-sports-bra-8032742/](notebooks/poses/pexels-mart-production-8032742.jpg)
+* [Photo by Elina Fairytale: https://www.pexels.com/photo/woman-in-pink-tank-top-and-blue-leggings-bending-her-body-3823074/](notebooks/poses/pexels-elina-fairytale-3823074.jpg)
+* [Photo by Cliff  Booth: https://www.pexels.com/photo/photo-of-woman-stretching-her-legs-4057525/](notebooks/poses/pexels-cliff-booth-4057525.jpg)
+* [Photo by Mikhail Nilov: https://www.pexels.com/photo/woman-standing-in-a-bending-position-on-a-box-6740089/](notebooks/poses/pexels-mikhail-nilov-6740089.jpg)
+* [Photo by cottonbro studio: https://www.pexels.com/photo/woman-in-black-sports-bra-and-black-panty-doing-yoga-4323290/](notebooks/poses/pexels-cottonbro-studio-4323290.jpg)
+* [Photo by ArtHouse Studio: https://www.pexels.com/photo/photo-of-man-bending-his-body-4334910/](notebooks/poses/pexels-arthouse-studio-4334910.jpg)
+* [Photo by Anna Shvets: https://www.pexels.com/photo/graceful-woman-performing-variation-of-setu-bandha-sarvangasana-yoga-pose-5012071/](notebooks/poses/pexels-anna-shvets-5012071.jpg)
+* [Photo by Miriam Alonso: https://www.pexels.com/photo/calm-young-asian-woman-doing-supine-hand-to-big-toe-yoga-asana-7593010/](notebooks/poses/pexels-miriam-alonso-7593010.jpg)
+* [Photo by Miriam Alonso: https://www.pexels.com/photo/anonymous-sportswoman-doing-stretching-exercise-during-yoga-session-7593002/](notebooks/poses/pexels-miriam-alonso-7593002.jpg)
+* [Photo by Miriam Alonso: https://www.pexels.com/photo/fit-young-asian-woman-preparing-for-handstand-during-yoga-training-at-home-7593004/](notebooks/poses/pexels-miriam-alonso-7593004.jpg)
+* [Photo by Anete Lusina: https://www.pexels.com/photo/concentrated-woman-standing-in-tree-pose-on-walkway-4793290/](notebooks/poses/pexels-anete-lusina-4793290.jpg)
+* [Photo by Miriam Alonso: https://www.pexels.com/photo/faceless-sportive-woman-stretching-back-near-wall-7592982/](notebooks/poses/pexels-miriam-alonso-7592982.jpg)
+
