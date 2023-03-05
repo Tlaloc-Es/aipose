@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = "Lumache"
-copyright = "2021, Graziella"
-author = "Graziella"
+project = "aipose"
+copyright = "2022, Taloc-Es"
+author = "Taloc-Es"
 
 release = "0.1"
 version = "0.1.0"
