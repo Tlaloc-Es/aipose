@@ -4,6 +4,7 @@
 
 [![Downloads](https://static.pepy.tech/personalized-badge/aipose?period=month&units=international_system&left_color=grey&right_color=blue&left_text=PyPi%20Downloads)](https://pepy.tech/project/aipose)
 [![Stars](https://img.shields.io/github/stars/Tlaloc-Es/aipose?color=yellow&style=flat)](https://github.com/Tlaloc-Es/aipose/stargazers)
+[![Documentation Status](https://readthedocs.org/projects/aipose/badge/?version=latest)](https://aipose.readthedocs.io/en/latest/?badge=latest)
 
 </div>
 
