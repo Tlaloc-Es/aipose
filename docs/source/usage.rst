@@ -6,28 +6,24 @@ Usage
 Installation
 ------------
 
-To use Lumache, first install it using pip:
+To use ``aipose``, first install it using pip:
 
 .. code-block:: console
 
-   (.venv) $ pip install lumache
+   (.venv) $ pip install aipose
 
-Creating recipes
+you can install aipose from its source code.
+
+.. code-block:: console
+
+   git clone https://github.com/Tlaloc-Es/aipose.git
+   cd aipose
+   pip install -e .
+
+Run demo
 ----------------
+Use the following command to run a demo with your cam and YOLOv7 pose estimator,
 
-To retrieve a list of random ingredients,
-you can use the ``lumache.get_random_ingredients()`` function:
-
-.. autofunction:: lumache.get_random_ingredients
-
-The ``kind`` parameter should be either ``"meat"``, ``"fish"``,
-or ``"veggies"``. Otherwise, :py:func:`lumache.get_random_ingredients`
-will raise an exception.
-
-.. autoexception:: lumache.InvalidKindError
-
-For example:
-
->>> import lumache
->>> lumache.get_random_ingredients()
-['shells', 'gorgonzola', 'parsley']
+.. code-block:: console
+   
+   posewebcam
