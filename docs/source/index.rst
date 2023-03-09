@@ -1,7 +1,7 @@
 Welcome to AIPOSE's documentation!
 ===================================
 
-**aipose** (/lu'make/) is a Python library for use pose estimator easyli in your python project in order to do this.
+**aipose** is a Python library for use pose estimator easyli in your python project in order to do this.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
