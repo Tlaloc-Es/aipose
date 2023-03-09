@@ -5,7 +5,6 @@
 [![Downloads](https://static.pepy.tech/personalized-badge/aipose?period=month&units=international_system&left_color=grey&right_color=blue&left_text=PyPi%20Downloads)](https://pepy.tech/project/aipose)
 [![Stars](https://img.shields.io/github/stars/Tlaloc-Es/aipose?color=yellow&style=flat)](https://github.com/Tlaloc-Es/aipose/stargazers)
 [![Documentation Status](https://readthedocs.org/projects/aipose/badge/?version=latest)](https://aipose.readthedocs.io/en/latest/?badge=latest)
-
 </div>
 
 <p align="center">
@@ -36,6 +35,13 @@ Use the following command to run a demo with your cam and YOLOv7 pose estimator,
 ```bash
 posewebcam
 ```
+
+## Running over a video results
+
+<p align="center">
+    <img src="https://raw.githubusercontent.com/Tlaloc-Es/aipose/master/video.gif" width="250" height="200" />
+    <img src="https://raw.githubusercontent.com/Tlaloc-Es/aipose/master/video_processed.gif" width="250" height="200" />
+</ p>
 
 ## How to use
 
