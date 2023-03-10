@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aipose"
-version = "1.4.0"
+version = "1.4.1"
 description = "Library to use pose estimation in your projects easily"
 license = "MIT"
 homepage = "https://github.com/Tlaloc-Es/aipose"
@@ -61,7 +61,7 @@ seaborn = "^0.12.2"
 ipywidgets = "^8.0.4"
 
 [tool.commitizen]
-version = "1.4.0"
+version = "1.4.1"
 version_files = [
     "pyproject.toml:^version"
 ]
