@@ -1,3 +1,9 @@
+## 1.4.0 (2023-03-10)
+
+### Feat
+
+- **stream**: added two new events to the flow processor and decouple pytorch
+
 ## 1.3.0 (2023-03-10)
 
 ### Feat
