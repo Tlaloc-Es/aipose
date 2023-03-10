@@ -2,7 +2,7 @@
 name = "aipose"
 version = "1.4.1"
 description = "Library to use pose estimation in your projects easily"
-license = "MIT"
+license = "https://github.com/Tlaloc-Es/aipose/blob/master/LICENSE.txt"
 homepage = "https://github.com/Tlaloc-Es/aipose"
 repository = "https://github.com/Tlaloc-Es/aipose"
 documentation = "https://aipose.readthedocs.io/en/latest/"
@@ -10,6 +10,9 @@ keywords = ["pose-estimator", "yolo", "yolov7"]
 authors = ["Tlaloc-Es <dev@tlaloc-es.com>"]
 packages = [{include = "aipose"}]
 readme = "README.md"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/Tlaloc-Es/aipose/issues"
 
 [tool.poetry.dependencies]
 python = "^3.10"
