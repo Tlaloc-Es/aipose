@@ -5,6 +5,7 @@ description = "Library to use pose estimation in your projects easily"
 license = "MIT"
 homepage = "https://github.com/Tlaloc-Es/aipose"
 repository = "https://github.com/Tlaloc-Es/aipose"
+documentation = "https://aipose.readthedocs.io/en/latest/"
 keywords = ["pose-estimator", "yolo", "yolov7"]
 authors = ["Tlaloc-Es <dev@tlaloc-es.com>"]
 packages = [{include = "aipose"}]
