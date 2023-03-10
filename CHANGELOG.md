@@ -1,3 +1,9 @@
+## 1.3.0 (2023-03-10)
+
+### Feat
+
+- **stream**: added new kind of stream - rtsp, and add pydoc for stream functions
+
 ## 1.2.0 (2023-03-03)
 
 ### Feat
