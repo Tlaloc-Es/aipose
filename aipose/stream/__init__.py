@@ -1,7 +1,4 @@
-from typing import Any
-
 import cv2
-import torch
 
 from aipose.frame.frame_manager_base import FrameManagerBase
 
@@ -72,9 +69,11 @@ def _process_stream(frame_manager: FrameManagerBase, source: str | int):
 
     capture = cv2.VideoCapture(source)
 
-    while capture.isOpened():
-        torch.cuda.empty_cache()
+    frame_manager.on_starts_stream(source)
 
+    while capture.isOpened():
+
+        frame_manager.before_read_frame()
         ret, frame = capture.read()
 
         if ret:

@@ -16,4 +16,5 @@ Contents
 .. toctree::
 
    usage
+   video_stream
    yolov7

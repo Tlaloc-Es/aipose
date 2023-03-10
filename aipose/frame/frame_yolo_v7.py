@@ -1,5 +1,6 @@
 from typing import List
 
+import torch
 from numpy import ndarray
 
 from aipose.frame import FrameManagerBase
@@ -9,6 +10,9 @@ from aipose.models.yolov7 import YoloV7Pose, YoloV7PoseKeypoints
 class FrameYoloV7(FrameManagerBase):
     def __init__(self):
         self.model = YoloV7Pose()
+
+    def before_read_frame(self):
+        torch.cuda.empty_cache()
 
     def on_frame(self, frame: ndarray) -> ndarray:
         prediction, image_tensor = self.model(frame)
