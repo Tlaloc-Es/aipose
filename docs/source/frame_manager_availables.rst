@@ -1,4 +1,4 @@
-Video Stream
+Frame Manager
 ######################
 
 The Video Stream library uses OpenCV to read from various sources of video such as webcams, videos, or RTSP streams.
