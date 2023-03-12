@@ -25,5 +25,5 @@ You can use these events to perform various actions such as initializing variabl
       
       stream_started --> before_read_frame
       before_read_frame --> frame_received
+      frame_received -->before_read_frame
       frame_received -->stream_ended
-      stream_ended --> stream_started

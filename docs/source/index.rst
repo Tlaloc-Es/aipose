@@ -18,3 +18,4 @@ Contents
    usage
    video_stream
    yolov7
+   frame_manager_availables
