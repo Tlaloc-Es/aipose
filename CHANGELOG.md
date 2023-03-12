@@ -1,3 +1,9 @@
+## 2.0.0 (2023-03-12)
+
+### Feat
+
+- **all-project**: add pydoc and doc to rtd, change the api, fix bugs
+
 ## 1.4.1 (2023-03-10)
 
 ### Fix
