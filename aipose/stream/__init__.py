@@ -69,20 +69,22 @@ def _process_stream(frame_manager: FrameManagerBase, source: str | int):
 
     capture = cv2.VideoCapture(source)
 
-    frame_manager.on_starts_stream(source)
+    frame_manager.stream_started(source)
 
     while capture.isOpened():
 
         frame_manager.before_read_frame()
         ret, frame = capture.read()
 
-        if ret:
-            frame = frame_manager.on_frame(frame)
-            cv2.imshow("AIPOSE - Stream Video - Press 's' to exit", frame)
-            if cv2.waitKey(1) == ord("s") or frame_manager.to_stop():
-                break
+        if not ret:
+            break
+
+        frame = frame_manager.frame_received(frame)
+        cv2.imshow("AIPOSE - Stream Video - Press 'q' to exit", frame)
+        if cv2.waitKey(1) == ord("q") or frame_manager.to_stop():
+            break
 
     capture.release()
     cv2.destroyAllWindows()
 
-    frame_manager.on_ends_stream()
+    frame_manager.stream_ended()
