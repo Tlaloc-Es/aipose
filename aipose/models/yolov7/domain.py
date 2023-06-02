@@ -274,10 +274,10 @@ class YoloV7Pose:
         # Turn image into batch
         image = image.unsqueeze(0)  # torch.Size([1, 3, 567, 960])
         with torch.no_grad():
-            output, _ = self.model(image)
+            original_output, _ = self.model(image)
 
-        output = non_max_suppression_kpt(
-            output,
+        original_output = non_max_suppression_kpt(
+            original_output,
             0.25,
             0.65,
             nc=self.model.yaml["nc"],
@@ -286,7 +286,7 @@ class YoloV7Pose:
         )
 
         with torch.no_grad():
-            output = output_to_keypoint(output)
+            output = output_to_keypoint(original_output)
 
         return (
             [
@@ -294,5 +294,5 @@ class YoloV7Pose:
                 for prediction in output
             ],
             image,
-            output,
+            original_output,
         )
