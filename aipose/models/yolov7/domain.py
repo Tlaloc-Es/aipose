@@ -238,7 +238,6 @@ class YoloV7Pose:
             self.model.half().to(self.device)
 
     def download_yolo_w6_pose(self) -> None:
-
         if not os.path.isfile(self.aipose_model_path):
             self._download_yolo_w6_pose()
         current_model_hash = hashlib.md5(
@@ -263,7 +262,9 @@ class YoloV7Pose:
                     f.write(chunk)
         return local_filename
 
-    def __call__(self, image: ndarray) -> Tuple[List[YoloV7PoseKeypoints], ndarray]:
+    def __call__(
+        self, image: ndarray
+    ) -> Tuple[List[YoloV7PoseKeypoints], ndarray, List]:
         # Resize and pad image
         image = letterbox(image, 960, stride=64, auto=True)[0]  # shape: (567, 960, 3)
         # Apply transforms
@@ -287,7 +288,11 @@ class YoloV7Pose:
         with torch.no_grad():
             output = output_to_keypoint(output)
 
-        return [
-            YoloV7PoseKeypoints(prediction, image.shape[2], image.shape[3])
-            for prediction in output
-        ], image
+        return (
+            [
+                YoloV7PoseKeypoints(prediction, image.shape[2], image.shape[3])
+                for prediction in output
+            ],
+            image,
+            output,
+        )
