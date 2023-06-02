@@ -1,3 +1,9 @@
+## 2.1.0 (2023-06-02)
+
+### Feat
+
+- **yolov7**: added original prediction in the output
+
 ## 2.0.0 (2023-03-12)
 
 ### Feat
