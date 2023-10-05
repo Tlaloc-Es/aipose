@@ -1,3 +1,9 @@
+## 3.0.0 (2023-10-05)
+
+### Refactor
+
+- **project**: refactor all project to reduce unuseful code
+
 ## 2.1.1 (2023-06-02)
 
 ### Fix
