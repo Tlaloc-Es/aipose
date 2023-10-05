@@ -72,7 +72,6 @@ def _process_stream(frame_manager: FrameManagerBase, source: str | int):
     frame_manager.stream_started(source)
 
     while capture.isOpened():
-
         frame_manager.before_read_frame()
         ret, frame = capture.read()
 
