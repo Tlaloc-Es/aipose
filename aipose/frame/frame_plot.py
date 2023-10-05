@@ -19,7 +19,7 @@ class FramePlot(FrameManagerBase):
     Methods:
         __init__(model): Initializes a new instance of the FramePlot class with the specified model.
         frame_received(frame: ndarray) -> ndarray: Overrides the frame_received method of FrameManagerBase, applies the model to the frame and plots the predictions.
-        _plot(prediction: List[YoloV7PoseKeypoints], image_tensor: ndarray) -> ndarray: Plots the predicted keypoints on the input image.
+        _plot(prediction: List[YoloV7PoseKeypoints], frame: ndarray) -> ndarray: Plots the predicted keypoints on the input image.
     """
 
     def __init__(self, model):
@@ -41,26 +41,23 @@ class FramePlot(FrameManagerBase):
         Returns:
             ndarray: The modified frame.
         """
-        prediction, image_tensor = self.model(frame)
-        frame = self._plot(prediction, image_tensor)
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        yolo_v7_keypoints = self.model(frame)  # TODO: fix this
+        frame = self._plot(yolo_v7_keypoints, frame)
         return frame
 
-    def _plot(
-        self, prediction: List[YoloV7PoseKeypoints], image_tensor: ndarray
-    ) -> ndarray:
+    def _plot(self, prediction: List[YoloV7PoseKeypoints], frame: ndarray) -> ndarray:
         """
         Plots the predicted keypoints on the input image.
 
         Args:
             prediction (List[YoloV7PoseKeypoints]): The predicted keypoints.
-            image_tensor (ndarray): The input image.
+            frame (ndarray): The input image.
 
         Returns:
             ndarray: The image with the predicted keypoints plotted.
         """
         frame = plot(
-            image_tensor,
+            frame,
             np.array([value.raw_keypoint for value in prediction]),
             plot_image=False,
             return_img=True,

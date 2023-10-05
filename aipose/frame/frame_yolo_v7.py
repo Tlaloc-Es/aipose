@@ -18,7 +18,7 @@ class FrameYoloV7(FrameManagerBase):
         __init__(): Initializes a new instance of the FrameYoloV7 class and sets the model to YOLOv7Pose.
         before_read_frame(): Overrides the before_read_frame method of FrameManagerBase, empties the GPU cache before reading the next frame.
         frame_received(frame: ndarray) -> ndarray: Overrides the frame_received method of FrameManagerBase, applies the model to the frame and processes the result.
-        on_predict(frame: ndarray, prediction: List[YoloV7PoseKeypoints], image_tensor: ndarray) -> None | ndarray:
+        on_predict(frame: ndarray, prediction: List[YoloV7PoseKeypoints]) -> None | ndarray:
             This method is called after the prediction is made, can be overridden in the subclass for additional processing of the result.
     """
 
@@ -44,8 +44,8 @@ class FrameYoloV7(FrameManagerBase):
         Returns:
             ndarray: The processed frame.
         """
-        prediction, image_tensor = self.model(frame)
-        processed_frame = self.on_predict(frame, prediction, image_tensor)
+        prediction = self.model(frame)
+        processed_frame = self.on_predict(frame, prediction)
         if processed_frame is None:
             return frame
         else:
@@ -55,7 +55,6 @@ class FrameYoloV7(FrameManagerBase):
         self,
         frame: ndarray,
         prediction: List[YoloV7PoseKeypoints],
-        image_tensor: ndarray,
     ) -> None | ndarray:
         """
         This method is called after the prediction is made, can be overridden in the subclass for additional processing of the result.
@@ -63,7 +62,6 @@ class FrameYoloV7(FrameManagerBase):
         Args:
             frame (ndarray): The input frame.
             prediction (List[YoloV7PoseKeypoints]): The predicted keypoints.
-            image_tensor (ndarray): The input image.
 
         Returns:
             None | ndarray: If None, the processed frame is not returned and the original frame is returned instead.

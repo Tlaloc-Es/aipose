@@ -98,7 +98,21 @@ def plot_skeleton_kpts(im, kpts, steps, orig_shape=None):
         cv2.line(im, pos1, pos2, (int(r), int(g), int(b)), thickness=2)
 
 
-def plot(image: Tensor, output: ndarray, plot_image=True, return_img=False):
+def plot(image: np.ndarray, output: np.ndarray, plot_image=True, return_img=False):
+    for idx in range(output.shape[0]):
+        plot_skeleton_kpts(image, output[idx, 7:].T, 3)
+
+    if plot_image:
+        plt.figure(figsize=(8, 8))
+        plt.axis("off")
+        plt.imshow(image)
+        plt.show()
+
+    if return_img:
+        return image
+
+
+def plot_tensor(image: Tensor, output: ndarray, plot_image=True, return_img=False):
     nimg = image[0].permute(1, 2, 0) * 255
     nimg = nimg.cpu().numpy().astype(np.uint8)
     nimg = cv2.cvtColor(nimg, cv2.COLOR_RGB2BGR)
