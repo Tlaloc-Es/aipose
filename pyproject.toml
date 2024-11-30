@@ -44,6 +44,12 @@ ipykernel = "*"
 ipython = "*"
 commitizen = "*"
 poethepoet = "*"
+pre-commit = "*"
+ruff = "*"
+coverage = "*"
+pytest-cov = "*"
+mkdocs = "*"
+mkdocstrings = "*"
 
 [tool.poetry.scripts]
 posewebcam = 'aipose.__main__:webcam'
@@ -55,6 +61,10 @@ mypy = "mypy src --check-untyped-defs"
 lint = "pylint --rcfile=.pylintrc src --max-complexity=10"
 format = "black src test"
 type_check = "mypy src"
+git_hooks_install = "pre-commit install"
+git_hooks_update = "pre-commit autoupdate"
+git_hooks_run = "pre-commit run --all-files"
+
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.18.1"
