@@ -91,7 +91,7 @@ class YoloV7PoseKeypoints:
 
     @property
     def human_confidence(self) -> List[float]:
-        self.raw_keypoints[YoloV7PoseKeypointsIndex.CONFIDENCE]
+        return self.raw_keypoints[YoloV7PoseKeypointsIndex.CONFIDENCE]
 
     @property
     def human_center(self) -> List[float]:
