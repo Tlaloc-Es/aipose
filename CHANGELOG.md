@@ -1,3 +1,9 @@
+## 3.1.0 (2024-11-30)
+
+### Feat
+
+- update pre-commit hooks and add new linters
+
 ## 3.0.1 (2024-11-30)
 
 ### Fix
