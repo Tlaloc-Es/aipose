@@ -1,3 +1,9 @@
+## 3.0.1 (2024-11-30)
+
+### Fix
+
+- #9 'human_confidence' property does not return value
+
 ## 3.0.0 (2023-10-05)
 
 ### Refactor
