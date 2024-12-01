@@ -24,7 +24,7 @@ torchvision = ">=0.8.1,!=0.13.0"
 numpy = "<1.24.0, >=1.18.5"
 pandas = ">=1.1.4"
 tqdm = ">=4.41.0"
-seaborn = ">=0.11.0"
+seaborn = ">=0.12.2"
 scipy = ">=1.4.1"
 protobuf = "<4.21.3"
 tensorboard = ">=2.4.1"
@@ -35,31 +35,15 @@ types-requests = "^2.28.11.8"
 opencv-contrib-python = "^4.7.0.68"
 scikit-learn = "^1.2.1"
 
-[tool.poetry.dev-dependencies]
-pylint = "*"
-pytest = "*"
-black = "*"
-mypy = "*"
-ipykernel = "*"
-ipython = "*"
-commitizen = "*"
-poethepoet = "*"
-pre-commit = "*"
-ruff = "*"
-coverage = "*"
-pytest-cov = "*"
-mkdocs = "*"
-mkdocstrings = "*"
 
 [tool.poetry.scripts]
 posewebcam = 'aipose.__main__:webcam'
 
 [tool.poe.tasks]
-test = "python -m pytest -s -v test/"
+clean = "rm -rf dist .mypy_cache .pytest_cache"
+test = "pytest"
 check_commit = "pre-commit run --all-files"
 mypy = "mypy src --check-untyped-defs"
-lint = "pylint --rcfile=.pylintrc src --max-complexity=10"
-format = "black src test"
 type_check = "mypy src"
 git_hooks_install = "pre-commit install"
 git_hooks_update = "pre-commit autoupdate"
@@ -70,9 +54,22 @@ git_hooks_run = "pre-commit run --all-files"
 poethepoet = "^0.18.1"
 ipykernel = "^6.21.2"
 notebook = "^6.5.2"
-seaborn = "^0.12.2"
 ipywidgets = "^8.0.4"
 vulture = "^2.7"
+pytest = "*"
+mypy = "*"
+ipython = "*"
+commitizen = "*"
+pre-commit = "*"
+ruff = "*"
+coverage = "*"
+pytest-cov = "*"
+mkdocs = "*"
+mkdocstrings = "*"
+mkdocs-material = "*"
+mkdocs-mermaid2-plugin = "*"
+tox = "*"
+
 
 [tool.commitizen]
 version = "3.1.0"
@@ -84,42 +81,3 @@ tag_format = "$version"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.ruff]
-line-length = 88
-
-# Enable Pyflakes `E` and `F` codes by default.
-select = ["E", "F", "W", "C90", "UP", "N", "PLC", "PLE", "PLR", "PLW"]
-ignore = []
-
-exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".hg",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".ruff_cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "venv",
-]
-per-file-ignores = {}
-
-# Allow unused variables when underscore-prefixed.
-dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-
-target-version = "py38"
-
-[tool.ruff.mccabe]
-max-complexity = 10
-
