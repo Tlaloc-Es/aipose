@@ -21,13 +21,12 @@ You can use these events to perform various actions such as initializing variabl
 
 ```mermaid
 flowchart TD
-      
+
    stream_started --> before_read_frame
    before_read_frame --> frame_received
    frame_received --> before_read_frame
    frame_received --> stream_ended
 ```
-
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {

@@ -23,5 +23,3 @@ Use the following command to run a demo with your webcam and the YOLOv7 pose est
 ```console
 posewebcam
 ```
-
-

@@ -1,5 +1,5 @@
 site_name: "AIPOSE"
-site_url: !ENV READTHEDOCS_CANONICAL_URL
+site_url: ${READTHEDOCS_CANONICAL_URL}
 
 theme:
   name: material
@@ -17,7 +17,6 @@ plugins:
             show_source: false
             show_signature: true
             search_path: ["."]
-
   - search
   - mermaid2:
       version: '9.4.3'
@@ -30,7 +29,7 @@ plugins:
           lineColor: '#F8B229'
           secondaryColor: '#006100'
           tertiaryColor: '#fff'
-            
+
 nav:
 - Home: index.md
 - Usage: usage.md

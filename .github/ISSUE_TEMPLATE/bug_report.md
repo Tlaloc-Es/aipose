@@ -1,11 +1,12 @@
----
+______________________________________________________________________
+
 name: Bug report
 about: Create a report to help us improve
 title: "[BUG]"
 labels: bug
 assignees: Tlaloc-Es
 
----
+______________________________________________________________________
 
 **Issue description**
 Describe the issue you are experiencing in detail.
@@ -20,9 +21,10 @@ Explain what you expected to happen when you encountered the issue.
 Explain what actually happened when you encountered the issue.
 
 **Environment**
-- Python version: 
-- Library version: 
-- Operating system: 
+
+- Python version:
+- Library version:
+- Operating system:
 
 **Additional context**
 Provide any additional context or information that may be relevant to the issue, such as relevant documentation links, screenshots, or error logs.

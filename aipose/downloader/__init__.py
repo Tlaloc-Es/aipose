@@ -67,9 +67,10 @@ class Downloader:
 
             total_size = int(r.headers.get("Content-Length", 0))
 
-            with file_path.open("wb") as f, tqdm(
-                total=total_size, unit="B", unit_scale=True
-            ) as pbar:
+            with (
+                file_path.open("wb") as f,
+                tqdm(total=total_size, unit="B", unit_scale=True) as pbar,
+            ):
                 for chunk in r.iter_content(chunk_size=8192):
                     f.write(chunk)
                     pbar.update(len(chunk))

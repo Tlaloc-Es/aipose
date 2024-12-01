@@ -1,6 +1,3 @@
-from typing import List
-
-import cv2
 import numpy as np
 from numpy import ndarray
 
@@ -45,7 +42,7 @@ class FramePlot(FrameManagerBase):
         frame = self._plot(yolo_v7_keypoints, frame)
         return frame
 
-    def _plot(self, prediction: List[YoloV7PoseKeypoints], frame: ndarray) -> ndarray:
+    def _plot(self, prediction: list[YoloV7PoseKeypoints], frame: ndarray) -> ndarray:
         """
         Plots the predicted keypoints on the input image.
 

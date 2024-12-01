@@ -144,16 +144,13 @@ def non_max_suppression_kpt(  # noqa: C901
         if multi_label:
             i, j = (x[:, 5:] > conf_thres).nonzero(as_tuple=False).T
             x = torch.cat((box[i], x[i, j + 5, None], j[:, None].float()), 1)
-        else:  # best class only
-            if not kpt_label:
-                conf, j = x[:, 5:].max(1, keepdim=True)
-                x = torch.cat((box, conf, j.float()), 1)[conf.view(-1) > conf_thres]
-            else:
-                kpts = x[:, 6:]
-                conf, j = x[:, 5:6].max(1, keepdim=True)
-                x = torch.cat((box, conf, j.float(), kpts), 1)[
-                    conf.view(-1) > conf_thres
-                ]
+        elif not kpt_label:
+            conf, j = x[:, 5:].max(1, keepdim=True)
+            x = torch.cat((box, conf, j.float()), 1)[conf.view(-1) > conf_thres]
+        else:
+            kpts = x[:, 6:]
+            conf, j = x[:, 5:6].max(1, keepdim=True)
+            x = torch.cat((box, conf, j.float(), kpts), 1)[conf.view(-1) > conf_thres]
 
         # Filter by class
         if classes is not None:

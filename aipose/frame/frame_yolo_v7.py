@@ -1,5 +1,3 @@
-from typing import List
-
 import torch
 from numpy import ndarray
 
@@ -54,7 +52,7 @@ class FrameYoloV7(FrameManagerBase):
     def on_predict(
         self,
         frame: ndarray,
-        prediction: List[YoloV7PoseKeypoints],
+        prediction: list[YoloV7PoseKeypoints],
     ) -> None | ndarray:
         """
         This method is called after the prediction is made, can be overridden in the subclass for additional processing of the result.

@@ -1,5 +1,4 @@
 from enum import Enum
-from typing import List
 
 import numpy as np
 import torch
@@ -23,11 +22,11 @@ class YoloV7PoseKeypoints:
     """
 
     _step_keypoint: int = 3
-    raw_keypoints: List[float]
+    raw_keypoints: list[float]
 
     def __init__(
         self,
-        raw_keypoints: List[float],
+        raw_keypoints: list[float],
         height_prediction: int,
         width_prediction: int,
         height_original: int,
@@ -82,19 +81,19 @@ class YoloV7PoseKeypoints:
         return self.raw_keypoints[1]
 
     @property
-    def body_keypoints(self) -> List[float]:
+    def body_keypoints(self) -> list[float]:
         return self.raw_keypoints[7:]
 
     @property
-    def raw_keypoint(self) -> List[float]:
+    def raw_keypoint(self) -> list[float]:
         return self.raw_keypoints
 
     @property
-    def human_confidence(self) -> List[float]:
+    def human_confidence(self) -> list[float]:
         return self.raw_keypoints[YoloV7PoseKeypointsIndex.CONFIDENCE]
 
     @property
-    def human_center(self) -> List[float]:
+    def human_center(self) -> list[float]:
         x = self.raw_keypoints[YoloV7PoseKeypointsIndex.X.value]
         y = self.raw_keypoints[YoloV7PoseKeypointsIndex.Y.value]
         return (x, y)
@@ -137,7 +136,7 @@ class YoloV7PoseKeypoints:
 
     def total_confidence_over(
         self, expected_confidence: float
-    ) -> List[YoloV7PoseJoints]:
+    ) -> list[YoloV7PoseJoints]:
         """
         This method returns a list of YoloV7PoseJoints objects where the confidence level is greater than a given expected confidence level.
 
@@ -304,9 +303,9 @@ class YoloV7Pose:
                 trust_repo=True,
             )
         except Exception as e:  # noqa: F841
-            weigths = torch.load(self.aipose_model_path, map_location=self.device)
+            weights = torch.load(self.aipose_model_path, map_location=self.device)
 
-        self.model = weigths["model"]
+        self.model = weights["model"]
         self.model.float().eval()
 
         if torch.cuda.is_available():
@@ -314,7 +313,7 @@ class YoloV7Pose:
 
     def __call__(
         self, image: ndarray, conf_thres=0.25, iou_thres=0.65
-    ) -> List[YoloV7PoseKeypoints]:
+    ) -> list[YoloV7PoseKeypoints]:
         # Resize and pad image
         image_letterbox = letterbox(image, 960, stride=64, auto=True)[
             0
