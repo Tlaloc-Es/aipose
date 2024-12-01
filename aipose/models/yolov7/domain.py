@@ -41,19 +41,19 @@ class YoloV7PoseKeypoints:
         :param width: The width of the image.
         """
         self.raw_keypoints = raw_keypoints
-        self.raw_keypoints[
-            YoloV7PoseKeypointsIndex.WIDTH.value
-        ] = self._convert_dimension(
-            self.raw_keypoints[YoloV7PoseKeypointsIndex.WIDTH.value],
-            width_prediction,
-            width_original,
+        self.raw_keypoints[YoloV7PoseKeypointsIndex.WIDTH.value] = (
+            self._convert_dimension(
+                self.raw_keypoints[YoloV7PoseKeypointsIndex.WIDTH.value],
+                width_prediction,
+                width_original,
+            )
         )
-        self.raw_keypoints[
-            YoloV7PoseKeypointsIndex.HEIGHT.value
-        ] = self._convert_dimension(
-            self.raw_keypoints[YoloV7PoseKeypointsIndex.HEIGHT.value],
-            width_prediction,
-            width_original,
+        self.raw_keypoints[YoloV7PoseKeypointsIndex.HEIGHT.value] = (
+            self._convert_dimension(
+                self.raw_keypoints[YoloV7PoseKeypointsIndex.HEIGHT.value],
+                width_prediction,
+                width_original,
+            )
         )
         self.raw_keypoints[
             YoloV7PoseKeypointsIndex.X.value : YoloV7PoseKeypointsIndex.Y.value + 1
