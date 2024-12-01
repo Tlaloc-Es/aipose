@@ -1,5 +1,5 @@
 site_name: "AIPOSE"
-site_url: ${READTHEDOCS_CANONICAL_URL}
+site_url: !ENV READTHEDOCS_CANONICAL_URL
 
 theme:
   name: material
