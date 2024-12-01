@@ -1,4 +1,4 @@
-mkdocs==1.5.3
-mkdocs-material==9.1.15
-mkdocstrings==0.21.0
-mkdocs-mermaid2==0.5.2
+mkdocs
+mkdocs-material
+mkdocstrings
+mkdocs-mermaid2
