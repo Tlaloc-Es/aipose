@@ -1,7 +1,18 @@
-Welcome to AIPOSE's Documentation
+# Welcome to AIPOSE Documentation
 
-aipose is a Python library for using pose estimation easily in your Python project.
+<img src="https://raw.githubusercontent.com/Tlaloc-Es/aipose/master/logo.png" width="200" height="240"/>
 
-Check out the usage section for further information, including how to install the project.
+**AIPOSE** is a powerful and user-friendly Python library designed to make pose estimation simple and efficient for your Python projects.
 
-Note: This project is under active development.
+Whether you're working on applications in computer vision, motion tracking, or interactive systems, **AIPOSE** provides a seamless integration of pose estimation capabilities.
+
+---
+
+### 🚀 **Why Use AIPOSE?**
+- Simplifies pose estimation workflows.
+- Flexible and easy-to-integrate with existing Python projects.
+- Supports multiple pose estimation models.
+
+---
+
+Ready to dive in? Explore the documentation to unleash the full potential of pose estimation with **AIPOSE**.
