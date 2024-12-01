@@ -1,0 +1,35 @@
+site_name: "AIPOSE"
+
+theme:
+  name: material
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - python
+    - json
+
+plugins:
+  - search
+  - mermaid2:
+      version: '9.4.3'
+      arguments:
+        theme: 'dark'
+        themeVariables:
+          primaryColor: '#BB2528'
+          primaryTextColor: '#fff'
+          primaryBorderColor: '#7C0000'
+          lineColor: '#F8B229'
+          secondaryColor: '#006100'
+          tertiaryColor: '#fff'
+  - mkdocstrings:
+      handlers:
+        python:
+          options:
+            show_source: false
+
+nav:
+- Home: index.md
+- API: api.md
+- Usage: usage.md
+- Frame Manager: frame_manager_availables.md
+- YOLOv7: yolov7.md
