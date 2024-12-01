@@ -8,8 +8,5 @@ build:
     install:
       - pip install -r requirements-docs.txt
 
-sphinx:
-  configuration: docs/source/conf.py
-
 mkdocs:
   configuration: mkdocs.yml
