@@ -6,7 +6,7 @@ from torch import Tensor
 
 
 def plot_skeleton_kpts(im, kpts, steps, orig_shape=None):
-    # Plot the skeleton and keypointsfor coco datatset
+    # Plot the skeleton and keypointsfor coco dataset
     palette = np.array(
         [
             [255, 128, 0],
@@ -65,9 +65,10 @@ def plot_skeleton_kpts(im, kpts, steps, orig_shape=None):
         r, g, b = pose_kpt_color[kid]
         x_coord, y_coord = kpts[steps * kid], kpts[steps * kid + 1]
         if not (x_coord % 640 == 0 or y_coord % 640 == 0):
-            if steps == 3:
+            if steps == 3:  # noqa: PLR2004
                 conf = kpts[steps * kid + 2]
-                if conf < 0.5:
+                confidence_threshold = 0.5
+                if conf < confidence_threshold:
                     continue
             cv2.circle(
                 im, (int(x_coord), int(y_coord)), radius, (int(r), int(g), int(b)), -1
@@ -86,10 +87,11 @@ def plot_skeleton_kpts(im, kpts, steps, orig_shape=None):
         r, g, b = pose_limb_color[sk_id]
         pos1 = (int(kpts[(sk[0] - 1) * steps]), int(kpts[(sk[0] - 1) * steps + 1]))
         pos2 = (int(kpts[(sk[1] - 1) * steps]), int(kpts[(sk[1] - 1) * steps + 1]))
-        if steps == 3:
+        if steps == 3:  # noqa: PLR2004
             conf1 = kpts[(sk[0] - 1) * steps + 2]
             conf2 = kpts[(sk[1] - 1) * steps + 2]
-            if conf1 < 0.5 or conf2 < 0.5:
+            confidence_threshold = 0.5
+            if conf1 < confidence_threshold or conf2 < confidence_threshold:
                 continue
         if pos1[0] % 640 == 0 or pos1[1] % 640 == 0 or pos1[0] < 0 or pos1[1] < 0:
             continue
@@ -98,9 +100,18 @@ def plot_skeleton_kpts(im, kpts, steps, orig_shape=None):
         cv2.line(im, pos1, pos2, (int(r), int(g), int(b)), thickness=2)
 
 
-def plot(image: np.ndarray, output: np.ndarray, plot_image=True, return_img=False):
+def plot(
+    image: np.ndarray,
+    output: np.ndarray,
+    plot_image=True,
+    return_img=False,
+    new_yolo=False,
+):
     for idx in range(output.shape[0]):
-        plot_skeleton_kpts(image, output[idx, 7:].T, 3)
+        if new_yolo:
+            plot_skeleton_kpts(image, output[idx, :].T, 3)
+        else:
+            plot_skeleton_kpts(image, output[idx, 7:].T, 3)
 
     if plot_image:
         plt.figure(figsize=(8, 8))

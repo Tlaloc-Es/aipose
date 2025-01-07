@@ -32,6 +32,9 @@ indent-width = 4
 # Assume Python 3.10
 target-version = "py310"
 
+[lint.pylint]
+max-args = 6
+
 [lint.mccabe]
 max-complexity = 10
 
