@@ -75,26 +75,17 @@ Or you can try to make a pull request with your improvements to the repo.
 
 ## Source of videos and images
 
-- Video by Mikhail Nilov: https://www.pexels.com/video/a-woman-exercising-using-an-exercise-ball-6739975/
+- Video: [Mikhail Nilov](https://www.pexels.com/video/a-woman-exercising-using-an-exercise-ball-6739975/)
 
-In folder notebooks/poses/
+### Images (Pexels)
 
-- [Photo by Roman Davayposmotrim: https://www.pexels.com/photo/woman-wearing-black-sports-bra-reaching-floor-while-standing-35987/](notebooks/poses/pexels-roman-davayposmotrim-35987.jpg)
-- [Photo by Vlada Karpovich: https://www.pexels.com/photo/a-woman-doing-yoga-4534689/](pexels-roman-davayposmotrim-35987.jpg)
-- [Photo by Lucas Pezeta: https://www.pexels.com/photo/woman-doing-yoga-2121049/](notebooks/poses/pexels-lucas-pezeta-2121049)
-- [Photo by Cliff Booth: https://www.pexels.com/photo/photo-of-woman-in-a-yoga-position-4057839/](pnotebooks/poses/exels-cliff-booth-4057839.jpg)
-- [Photo by Cliff Booth: https://www.pexels.com/photo/photo-of-woman-meditating-alone-4056969/](notebooks/poses/pexels-cliff-booth-4056969.jpg)
-- [Photo by MART PRODUCTION: https://www.pexels.com/photo/photo-of-a-woman-meditating-8032834/](notebooks/poses/pexels-mart-production-8032834.jpg)
-- [Photo by Antoni Shkraba: https://www.pexels.com/photo/woman-in-blue-tank-top-and-black-leggings-doing-yoga-4662330/](notebooks/poses/pexels-antoni-shkraba-4662330.jpg)
-- [Photo by MART PRODUCTION: https://www.pexels.com/photo/woman-wearing-a-sports-bra-8032742/](notebooks/poses/pexels-mart-production-8032742.jpg)
-- [Photo by Elina Fairytale: https://www.pexels.com/photo/woman-in-pink-tank-top-and-blue-leggings-bending-her-body-3823074/](notebooks/poses/pexels-elina-fairytale-3823074.jpg)
-- [Photo by Cliff Booth: https://www.pexels.com/photo/photo-of-woman-stretching-her-legs-4057525/](notebooks/poses/pexels-cliff-booth-4057525.jpg)
-- [Photo by Mikhail Nilov: https://www.pexels.com/photo/woman-standing-in-a-bending-position-on-a-box-6740089/](notebooks/poses/pexels-mikhail-nilov-6740089.jpg)
-- [Photo by cottonbro studio: https://www.pexels.com/photo/woman-in-black-sports-bra-and-black-panty-doing-yoga-4323290/](notebooks/poses/pexels-cottonbro-studio-4323290.jpg)
-- [Photo by ArtHouse Studio: https://www.pexels.com/photo/photo-of-man-bending-his-body-4334910/](notebooks/poses/pexels-arthouse-studio-4334910.jpg)
-- [Photo by Anna Shvets: https://www.pexels.com/photo/graceful-woman-performing-variation-of-setu-bandha-sarvangasana-yoga-pose-5012071/](notebooks/poses/pexels-anna-shvets-5012071.jpg)
-- [Photo by Miriam Alonso: https://www.pexels.com/photo/calm-young-asian-woman-doing-supine-hand-to-big-toe-yoga-asana-7593010/](notebooks/poses/pexels-miriam-alonso-7593010.jpg)
-- [Photo by Miriam Alonso: https://www.pexels.com/photo/anonymous-sportswoman-doing-stretching-exercise-during-yoga-session-7593002/](notebooks/poses/pexels-miriam-alonso-7593002.jpg)
-- [Photo by Miriam Alonso: https://www.pexels.com/photo/fit-young-asian-woman-preparing-for-handstand-during-yoga-training-at-home-7593004/](notebooks/poses/pexels-miriam-alonso-7593004.jpg)
-- [Photo by Anete Lusina: https://www.pexels.com/photo/concentrated-woman-standing-in-tree-pose-on-walkway-4793290/](notebooks/poses/pexels-anete-lusina-4793290.jpg)
-- [Photo by Miriam Alonso: https://www.pexels.com/photo/faceless-sportive-woman-stretching-back-near-wall-7592982/](notebooks/poses/pexels-miriam-alonso-7592982.jpg)
+- [Roman Davayposmotrim](https://www.pexels.com/photo/woman-wearing-black-sports-bra-reaching-floor-while-standing-35987/)
+- [Vlada Karpovich](https://www.pexels.com/photo/a-woman-doing-yoga-4534689/)
+- [Lucas Pezeta](https://www.pexels.com/photo/woman-doing-yoga-2121049/)
+- [Cliff Booth](https://www.pexels.com/photo/photo-of-woman-in-a-yoga-position-4057839/)
+- [MART PRODUCTION](https://www.pexels.com/photo/photo-of-a-woman-meditating-8032834/)
+- [Antoni Shkraba](https://www.pexels.com/photo/woman-in-blue-tank-top-and-black-leggings-doing-yoga-4662330/)
+- [Elina Fairytale](https://www.pexels.com/photo/woman-in-pink-tank-top-and-blue-leggings-bending-her-body-3823074/)
+- [Anna Shvets](https://www.pexels.com/photo/graceful-woman-performing-variation-of-setu-bandha-sarvangasana-yoga-pose-5012071/)
+- [Miriam Alonso](https://www.pexels.com/photo/calm-young-asian-woman-doing-supine-hand-to-big-toe-yoga-asana-7593010/)
+- [Anete Lusina](https://www.pexels.com/photo/concentrated-woman-standing-in-tree-pose-on-walkway-4793290/)
