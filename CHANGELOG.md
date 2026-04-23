@@ -1,3 +1,13 @@
+## 3.2.0 (2026-04-23)
+
+### Feat
+
+- **yolo**: implement YOLO pose keypoints and model integration
+
+### Refactor
+
+- migrate from poetry to uv
+
 ## 3.1.0 (2024-11-30)
 
 ### Feat
