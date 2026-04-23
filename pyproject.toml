@@ -1,6 +1,6 @@
 [project]
 name = "aipose"
-version = "3.2.0"
+version = "3.2.1"
 description = "Library to use pose estimation in your projects easily"
 license = { file = "LICENSE.txt" }
 readme = "README.md"
@@ -71,7 +71,7 @@ git_hooks_update = "pre-commit autoupdate"
 git_hooks_run = "pre-commit run --all-files"
 
 [tool.commitizen]
-version = "3.2.0"
+version = "3.2.1"
 version_files = ["pyproject.toml:^version"]
 tag_format = "$version"
 
