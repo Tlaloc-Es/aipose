@@ -1,44 +1,64 @@
-[tool.poetry]
+[project]
 name = "aipose"
 version = "3.1.0"
 description = "Library to use pose estimation in your projects easily"
-license = "https://github.com/Tlaloc-Es/aipose/blob/master/LICENSE.txt"
-homepage = "https://github.com/Tlaloc-Es/aipose"
-repository = "https://github.com/Tlaloc-Es/aipose"
-documentation = "https://aipose.readthedocs.io/en/latest/"
-keywords = ["pose-estimator", "yolo", "yolov7"]
-authors = ["Tlaloc-Es <dev@tlaloc-es.com>"]
-packages = [{include = "aipose"}]
+license = { file = "LICENSE.txt" }
 readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["pose-estimator", "yolo", "yolov7"]
+authors = [{ name = "Tlaloc-Es", email = "dev@tlaloc-es.com" }]
+dependencies = [
+    "pydantic",
+    "matplotlib>=3.2.2",
+    "opencv-python>=4.1.1",
+    "torch>=1.7.0,!=1.12.0",
+    "torchvision>=0.8.1,!=0.13.0",
+    "numpy>=1.24.0,<2.0",
+    "pandas>=2.2.0",
+    "tqdm>=4.41.0",
+    "seaborn>=0.12.2",
+    "scipy>=1.4.1",
+    "protobuf<4.21.3",
+    "tensorboard>=2.4.1",
+    "pyyaml>=6.0",
+    "click>=8.1.3",
+    "requests>=2.28.2",
+    "types-requests>=2.28.11.8",
+    "opencv-contrib-python>=4.7.0.68",
+    "scikit-learn>=1.2.1",
+    "ultralytics>=8.3.39",
+]
 
-[tool.poetry.urls]
+[project.urls]
+Homepage = "https://github.com/Tlaloc-Es/aipose"
+Repository = "https://github.com/Tlaloc-Es/aipose"
+Documentation = "https://aipose.readthedocs.io/en/latest/"
 "Bug Tracker" = "https://github.com/Tlaloc-Es/aipose/issues"
 
-[tool.poetry.dependencies]
-python = "^3.10"
-pydantic = "*"
-matplotlib = ">=3.2.2"
-opencv-python = ">=4.1.1"
-torch = ">=1.7.0,!=1.12.0"
-torchvision = ">=0.8.1,!=0.13.0"
-numpy = "<1.24.0, >=1.18.5"
-pandas = ">=1.1.4"
-tqdm = ">=4.41.0"
-seaborn = ">=0.12.2"
-scipy = ">=1.4.1"
-protobuf = "<4.21.3"
-tensorboard = ">=2.4.1"
-pyyaml = "^6.0"
-click = "^8.1.3"
-requests = "^2.28.2"
-types-requests = "^2.28.11.8"
-opencv-contrib-python = "^4.7.0.68"
-scikit-learn = "^1.2.1"
-ultralytics = "^8.3.39"
+[project.scripts]
+posewebcam = "aipose.__main__:webcam"
 
-
-[tool.poetry.scripts]
-posewebcam = 'aipose.__main__:webcam'
+[dependency-groups]
+dev = [
+    "poethepoet>=0.18.1",
+    "ipykernel>=6.21.2",
+    "notebook>=6.5.2",
+    "ipywidgets>=8.0.4",
+    "vulture>=2.7",
+    "pytest",
+    "mypy",
+    "ipython",
+    "commitizen",
+    "pre-commit",
+    "ruff",
+    "coverage",
+    "pytest-cov",
+    "mkdocs",
+    "mkdocstrings",
+    "mkdocs-material",
+    "mkdocs-mermaid2-plugin",
+    "tox",
+]
 
 [tool.poe.tasks]
 clean = "rm -rf dist .mypy_cache .pytest_cache"
@@ -50,35 +70,11 @@ git_hooks_install = "pre-commit install"
 git_hooks_update = "pre-commit autoupdate"
 git_hooks_run = "pre-commit run --all-files"
 
-
-[tool.poetry.group.dev.dependencies]
-poethepoet = "^0.18.1"
-ipykernel = "^6.21.2"
-notebook = "^6.5.2"
-ipywidgets = "^8.0.4"
-vulture = "^2.7"
-pytest = "*"
-mypy = "*"
-ipython = "*"
-commitizen = "*"
-pre-commit = "*"
-ruff = "*"
-coverage = "*"
-pytest-cov = "*"
-mkdocs = "*"
-mkdocstrings = "*"
-mkdocs-material = "*"
-mkdocs-mermaid2-plugin = "*"
-tox = "*"
-
-
 [tool.commitizen]
 version = "3.1.0"
-version_files = [
-    "pyproject.toml:^version"
-]
+version_files = ["pyproject.toml:^version"]
 tag_format = "$version"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -38,6 +38,44 @@ Use the following command to run a demo with your cam and YOLOv7 pose estimator,
 posewebcam
 ```
 
+### Testing without a physical webcam (Linux)
+
+You can simulate a webcam using `v4l2loopback` and `ffmpeg`:
+
+**1. Install dependencies:**
+
+```bash
+sudo apt install v4l2loopback-dkms ffmpeg
+```
+
+**2. Load the virtual device:**
+
+```bash
+sudo modprobe v4l2loopback devices=1 video_nr=0 card_label="FakeWebcam" exclusive_caps=1
+```
+
+**3. Feed it with a video or image (in a separate terminal):**
+
+```bash
+# Loop a video file
+ffmpeg -re -stream_loop -1 -i your_video.mp4 -vf format=yuv420p -f v4l2 /dev/video0
+
+# Or use a static image
+ffmpeg -re -loop 1 -i your_image.jpg -vf format=yuv420p -f v4l2 /dev/video0
+```
+
+**4. Run the demo in another terminal:**
+
+```bash
+posewebcam
+```
+
+**5. Unload the virtual device when done:**
+
+```bash
+sudo modprobe -r v4l2loopback
+```
+
 ## Running over a video results
 
 <p align="center">

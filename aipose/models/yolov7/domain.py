@@ -18,7 +18,8 @@ from aipose.utils import letterbox, non_max_suppression_kpt, output_to_keypoint
 
 class YoloV7PoseKeypoints:
     """
-    A class that represents pose keypoints and their confidences extracted by the YOLOv7 model.
+    A class that represents pose keypoints and their confidences
+    extracted by the YOLOv7 model.
     """
 
     _step_keypoint: int = 3
@@ -74,11 +75,11 @@ class YoloV7PoseKeypoints:
 
     @property
     def batch_id(self) -> int:
-        return self.raw_keypoints[0]
+        return int(self.raw_keypoints[0])
 
     @property
     def class_id(self) -> int:
-        return self.raw_keypoints[1]
+        return int(self.raw_keypoints[1])
 
     @property
     def body_keypoints(self) -> list[float]:
@@ -89,14 +90,14 @@ class YoloV7PoseKeypoints:
         return self.raw_keypoints
 
     @property
-    def human_confidence(self) -> list[float]:
-        return self.raw_keypoints[YoloV7PoseKeypointsIndex.CONFIDENCE]
+    def human_confidence(self) -> float:
+        return self.raw_keypoints[YoloV7PoseKeypointsIndex.CONFIDENCE.value]
 
     @property
     def human_center(self) -> list[float]:
         x = self.raw_keypoints[YoloV7PoseKeypointsIndex.X.value]
         y = self.raw_keypoints[YoloV7PoseKeypointsIndex.Y.value]
-        return (x, y)
+        return [x, y]
 
     @property
     def prediction_bounding_box_xyxy(self) -> PredictionBoundingBoxXYXY:
@@ -136,18 +137,17 @@ class YoloV7PoseKeypoints:
 
     def total_confidence_over(
         self, expected_confidence: float
-    ) -> list[YoloV7PoseJoints]:
+    ) -> list[YoloV7PoseKeypoint]:
         """
-        This method returns a list of YoloV7PoseJoints objects where the confidence level is greater than a given expected confidence level.
-
+        Returns keypoints whose confidence level exceeds the given threshold.
 
         Attributes:
-            expected_confidence (float): the confidence level threshold to filter keypoints
+            expected_confidence (float): confidence threshold to filter keypoints
 
         Returns:
-            List[YoloV7PoseJoints]: a list of YoloV7PoseJoints objects where the confidence level is greater than the expected confidence level.
+            list[YoloV7PoseKeypoint]: keypoints above the confidence threshold.
         """
-        keypoints_over_confidence = []
+        keypoints_over_confidence: list[YoloV7PoseKeypoint] = []
 
         for pose_joint_index in YoloV7PoseJoints:
             keypoint = self.get_keypoint(pose_joint_index)
@@ -165,7 +165,7 @@ class YoloV7PoseKeypoints:
         a = self.get_points_normalize_by_bbox()
         b = pose.get_points_normalize_by_bbox()
 
-        return round(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)), 4)
+        return float(round(np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b)), 4))
 
     def get_points_normalize_by_bbox(self) -> ndarray:
         bbox = self.prediction_bounding_box_xywh
@@ -265,7 +265,7 @@ class YoloV7PoseKeypoints:
         """
         Get the x, y, and confidence values for a single keypoint.
 
-        :param start_index: The index at which to start reading values from the raw_keypoints list.
+        :param start_index: Index to start reading from raw_keypoints.
         :return: A YoloV7PoseKeypoint object representing a single keypoint.
         """
         end_index = start_index + self._step_keypoint
@@ -295,16 +295,23 @@ class YoloV7Pose:
 
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
+        # Download the YoloV7 repo to populate sys.path with the `models` module
+        # needed to unpickle the checkpoint. skip_validation avoids the numpy
+        # requirements check bundled with the repo.
         try:
-            self.model = torch.hub.load(
+            torch.hub.load(
                 self._model_repo,
                 "custom",
-                f"{ self.aipose_model_path}",
+                self.aipose_model_path,
                 trust_repo=True,
+                skip_validation=True,
             )
-        except Exception as e:  # noqa: F841
-            weights = torch.load(self.aipose_model_path, map_location=self.device)
+        except Exception:  # noqa: BLE001
+            pass
 
+        weights = torch.load(
+            self.aipose_model_path, map_location=self.device, weights_only=False
+        )
         self.model = weights["model"]
         self.model.float().eval()
 
