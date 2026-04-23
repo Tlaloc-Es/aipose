@@ -9,7 +9,7 @@
 </div>
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/Tlaloc-Es/aipose/master/logo.png" width="200" height="240"/>
+    <img src="https://raw.githubusercontent.com/Tlaloc-Es/aipose/master/logo.png"/>
 </p>
 
 Library to use pose estimation in your projects easily.
